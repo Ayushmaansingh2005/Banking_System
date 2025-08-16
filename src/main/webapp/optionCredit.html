@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Credit Money</title>
+    <style>
+        body {
+          margin: 0;
+          font-family: 'Poppins', sans-serif;
+          background: linear-gradient(135deg, #90f8fc, #67b4f8);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .container {
+          background: rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(15px);
+          padding: 40px 50px;
+          border-radius: 20px;
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+          width: 400px;
+          text-align: center;
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          animation: fadeIn 1s ease-out;
+        }
+
+        h2 {
+          color: #1e88e5;
+          margin-bottom: 20px;
+        }
+
+        input {
+          width: 100%;
+          padding: 14px;
+          margin: 10px 0;
+          border: none;
+          border-radius: 10px;
+          font-size: 16px;
+        }
+
+        .btn {
+          width: 100%;
+          padding: 14px;
+          margin-top: 15px;
+          border: none;
+          border-radius: 10px;
+          font-size: 16px;
+          font-weight: bold;
+          color: white;
+          background-image: linear-gradient(to right, #1e88e5, #42a5f5);
+          cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .success-message {
+          margin-top: 20px;
+          color: #2e7d32;
+          font-weight: bold;
+          animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>➕ Credit Money</h2>
+    <form action="AccountServlet" method="post">
+        <input type="hidden" name="action" value="credit" />
+        <input type="text" name="accountNumber" placeholder="Your Account Number" required />
+        <input type="password" name="securityPin" placeholder="Security PIN" required />
+        <input type="number" name="amount" placeholder="Amount ₹" required />
+        <button class="btn" type="submit">Credit</button>
+    </form>
+
+    <div class="success-message" id="messageBox" style="display:none;"></div>
+</div>
+
+<script>
+    function handleCredit(event) {
+      event.preventDefault();
+
+      const amount = parseFloat(document.querySelector('input[name="amount"]').value);
+      const newBalance = 10000 + amount; // Simulated balance update
+
+      const message = `✅ ₹${amount} credited successfully!<br/>💼 Updated Balance: ₹${newBalance.toFixed(2)}`;
+      document.getElementById("messageBox").innerHTML = message;
+      document.getElementById("messageBox").style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bank Dashboard</title>
+    <style>
+        body {
+          margin: 0;
+          font-family: 'Poppins', sans-serif;
+          background: linear-gradient(135deg, #90f8fc, #67b4f8);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .container {
+          background: rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(15px);
+          padding: 50px 60px;
+          border-radius: 20px;
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+          width: 400px;
+          text-align: center;
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          animation: fadeIn 1s ease-out;
+        }
+
+        h3 {
+          margin: 0;
+          color: #4a148c;
+        }
+
+        h1 {
+          margin: 0;
+          color: #4a148c;
+        }
+
+        p {
+          margin: 4px 0 25px;
+          color: #311b92;
+          font-size: 14px;
+        }
+
+        .btn {
+          width: 100%;
+          padding: 14px;
+          margin: 10px 0;
+          border: none;
+          border-radius: 10px;
+          font-size: 16px;
+          font-weight: bold;
+          color: white;
+          cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          background-image: linear-gradient(to right, #5a189a, #7b2cbf);
+        }
+
+        .btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .logout-btn {
+          background-image: linear-gradient(to right, #ff4e50, #f9d423);
+          color: #111;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Placeholder: Replace with dynamic values using backend (JSP/Thymeleaf/Servlet setAttribute) -->
+    <h1>Welcome User </h1>
+
+
+
+    <form action="optionDebit.html" method="post">
+        <button class="btn" type="submit">➖ Debit Money</button>
+    </form>
+    <form action="optionCredit.html" method="post">
+        <button class="btn" type="submit">➕ Credit Money</button>
+    </form>
+    <form action="optionTranfer.html" method="post">
+        <button class="btn" type="submit">🔁 Transfer Money</button>
+    </form>
+    <form action="optiongetBalance.html" method="post">
+        <button class="btn" type="submit">💰 Check Balance</button>
+    </form>
+    <form action="logout" method="post">
+        <button class="btn logout-btn" type="submit">🚪 Log Out</button>
+    </form>
+</div>
+
+</body>
+</html>

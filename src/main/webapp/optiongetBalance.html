@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Check Balance</title>
+    <style>
+        body {
+          margin: 0;
+          font-family: 'Poppins', sans-serif;
+          background: linear-gradient(135deg, #90f8fc, #67b4f8);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .container {
+          background: rgba(255, 255, 255, 0.3);
+          backdrop-filter: blur(15px);
+          padding: 40px 50px;
+          border-radius: 20px;
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+          width: 400px;
+          text-align: center;
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          animation: fadeIn 1s ease-out;
+        }
+
+        h2 {
+          color: #4a148c;
+          margin-bottom: 10px;
+        }
+
+        input {
+          width: 100%;
+          padding: 14px;
+          margin: 10px 0;
+          border: none;
+          border-radius: 10px;
+          font-size: 16px;
+        }
+
+        .btn {
+          width: 100%;
+          padding: 14px;
+          margin-top: 15px;
+          border: none;
+          border-radius: 10px;
+          font-size: 16px;
+          font-weight: bold;
+          color: white;
+          background-image: linear-gradient(to right, #4a148c, #7b1fa2);
+          cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>💰 Check Balance</h2>
+    <form action="AccountServlet" method="post">
+        <input type="hidden" name="action" value="balance" />
+        <input type="number" name="accountNumber" placeholder="Enter Account Number" required />
+        <input type="password" name="securityPin" placeholder="Enter Security PIN" required />
+        <button class="btn" type="submit">Check Balance</button>
+    </form>
+</div>
+
+</body>
+</html>

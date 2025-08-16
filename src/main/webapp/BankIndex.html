@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #83a4d4, #b6fbff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+
+
+        .btn {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .exit-btn {
+            background-color: #e74c3c;
+        }
+
+        .exit-btn:hover {
+            background-color: #c0392b;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #1408EFFF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>--Welcome To Bank Of Bihar--</h1>
+    <h2> User </h2>
+
+
+    <form action="Login.html" method="post">
+        <button class="btn" type="submit">Login</button>
+    </form>
+
+    <form action ="register.html" method = "post">
+        <button class="btn" type="submit">Register</button>
+    </form>
+    <button class="btn exit-btn" onclick="alert('Exiting...')">Exit</button>
+</div>
+
+</body>
+</html>

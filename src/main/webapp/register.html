@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+    <style>
+        body {
+          margin: 0;
+          font-family: 'Poppins', sans-serif;
+          background: linear-gradient(120deg, #89f7fe, #66a6ff);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .container {
+          background: rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(15px);
+          padding: 50px 60px;
+          border-radius: 20px;
+          box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+          width: 350px;
+          text-align: center;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+          color: #2e003e;
+          font-size: 30px;
+          margin-bottom: 30px;
+        }
+
+        input {
+          width: 100%;
+          padding: 14px;
+          margin: 12px 0;
+          border: none;
+          border-radius: 8px;
+          font-size: 15px;
+          background-color: #ffffffee;
+          transition: all 0.3s ease;
+        }
+
+        input:focus {
+          outline: none;
+          box-shadow: 0 0 8px #a18cd1;
+        }
+
+        .btn {
+          width: 100%;
+          padding: 14px;
+          margin-top: 20px;
+          border: none;
+          border-radius: 10px;
+          background-image: linear-gradient(to right, #a18cd1, #fbc2eb);
+          color: white;
+          font-weight: bold;
+          font-size: 16px;
+          cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .message {
+          display: none;
+          margin-top: 15px;
+          font-weight: bold;
+          animation: fadeIn 1s ease-out;
+        }
+
+        .success {
+          color: green;
+        }
+
+        .fail {
+          color: red;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ Join the Bank ✨</h1>
+    <form action="RegisterServlet" method="post">
+        <input type="text" name="fullname" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button class="btn" type="submit">Register</button>
+        <!-- Home Button -->
+        <a href="BankIndex.html" class="btn" style="margin-top: 10px; display: block; text-decoration: none; text-align: center;">
+            🏠 Home
+        </a>
+
+    </form>
+
+    <!-- Response Messages -->
+    <div id="successMessage" class="message success">
+        ✅ Registration successful!
+        👆 Click for login
+    </div>
+    <div id="failMessage" class="message fail">
+        ❌ Registration failed. Please try again.
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("status") === "success") {
+        document.getElementById("successMessage").style.display = "block";
+      } else if (params.get("status") === "fail") {
+        document.getElementById("failMessage").style.display = "block";
+      }
+    };
+</script>
+
+</body>
+</html>

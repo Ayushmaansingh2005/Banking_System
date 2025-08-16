@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Open New Account</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #c2ffd8, #465efb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(14px);
+      padding: 50px 60px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      width: 370px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    h1 {
+      color: #240046;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      font-size: 18px;
+      margin: 15px 0;
+    }
+
+    .success {
+      color: #006400;
+    }
+
+    .fail {
+      color: #b30000;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #ffffffdd;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 8px #845ec2;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 18px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn.open {
+      background-image: linear-gradient(to right, #845ec2, #d65db1);
+      color: white;
+    }
+
+    .btn.home {
+      background-image: linear-gradient(to right, #00dbde, #fc00ff);
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🏦 Account Creation Status</h1>
+
+  <div id="messageArea" class="message"></div>
+  <div id="accountDisplay" class="message"></div>
+
+  <form id="homeForm" action="loginOperation.html" style="display: none;">
+    <button class="btn home" type="submit">🏠 Go to Home</button>
+  </form>
+
+  <hr style="margin: 30px 0; border: 0; height: 1px; background: #ccc;">
+
+  <h1>Open Another Account</h1>
+  <form action="AccountOpenServlet" method="post">
+    <input type="text" name="fullName" placeholder="Full Name" required />
+    <input type="email" id="emailInput" name="email" placeholder="Email Address" required readonly />
+    <input type="number" name="initialAmount" placeholder="Initial Deposit ₹" min="0" required />
+    <input type="password" name="pin" placeholder="4-Digit Security PIN" pattern="\d{4}" required />
+    <button class="btn open" type="submit">Create Account</button>
+  </form>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search); // 👈 Move this to the top!
+
+  const email = params.get("email");
+  if (email) {
+    document.getElementById("emailInput").value = email;
+  }
+
+  const status = params.get("status");
+  const account = params.get("account");
+
+  const messageArea = document.getElementById("messageArea");
+  const accountDisplay = document.getElementById("accountDisplay");
+  const homeForm = document.getElementById("homeForm");
+
+  if (status === "success" && account) {
+    messageArea.innerHTML = `<span class="success">🎉 Account created successfully!</span>`;
+    accountDisplay.innerHTML = `<strong>Your Account Number is: ${account}</strong>`;
+    homeForm.style.display = "block";
+  } else if (status === "fail") {
+    messageArea.innerHTML = `<span class="fail">❌ Account creation failed. Please try again.</span>`;
+  }
+</script>
+
+</body>
+</html>
