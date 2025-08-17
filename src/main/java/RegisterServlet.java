@@ -50,8 +50,6 @@ public class RegisterServlet extends HttpServlet {
             if (affectedRows > 0) {
                 res.sendRedirect("register.html?status=success");
             } else {
-
-
                 res.sendRedirect("register.html?status=fail");
             }
 
