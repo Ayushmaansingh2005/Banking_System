@@ -24,6 +24,7 @@ public class AccountOpenServlet extends HttpServlet {
         String open_account = "insert into accounts(account_number, full_name, email, balance, security_pin) values(?,?,?,?,?)";
 
         try {
+
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
